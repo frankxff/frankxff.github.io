@@ -292,6 +292,726 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://frankxff.github.io/2019/05/02/Pandas笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Frankxff">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Frankxff's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/02/Pandas笔记/" itemprop="url">Pandas笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-02T13:40:49+08:00">
+                2019-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ML/" itemprop="url" rel="index">
+                    <span itemprop="name">ML</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="导入Pandas"><a href="#导入Pandas" class="headerlink" title="导入Pandas"></a>导入Pandas</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+<h1 id="创建序列"><a href="#创建序列" class="headerlink" title="创建序列"></a>创建序列</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s = pd.Series([<span class="number">1</span>, <span class="number">3</span>, <span class="number">6</span>, np.nan, <span class="number">44</span>, <span class="number">1</span>])</span><br><span class="line">print(s)</span><br></pre></td></tr></table></figure>
+<pre><code>0     1.0
+1     3.0
+2     6.0
+3     NaN
+4    44.0
+5     1.0
+dtype: float64
+</code></pre><h1 id="创建DataFrame"><a href="#创建DataFrame" class="headerlink" title="创建DataFrame"></a>创建DataFrame</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#导入方式1</span></span><br><span class="line">dates = pd.date_range(<span class="string">'20190101'</span>, periods=<span class="number">6</span>)</span><br><span class="line">print(dates)</span><br><span class="line">df = pd.DataFrame(np.random.randn(<span class="number">6</span>,<span class="number">4</span>), index = dates, columns=[<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'d'</span>])</span><br><span class="line">print(df)</span><br><span class="line"><span class="comment">#导入方式2</span></span><br><span class="line">data = pd.DataFrame(np.arange(<span class="number">12</span>).reshape(<span class="number">3</span>, <span class="number">4</span>))</span><br><span class="line">print(data)</span><br><span class="line"><span class="comment">#自定义字典方式</span></span><br><span class="line">df2 = pd.DataFrame(&#123;<span class="string">'A'</span>: <span class="number">1.</span>,</span><br><span class="line">                   <span class="string">'B'</span>: pd.Timestamp(<span class="string">'20130102'</span>),</span><br><span class="line">                   <span class="string">'C'</span>: pd.Series(<span class="number">1</span>, index=list(range(<span class="number">4</span>)),dtype=<span class="string">'float32'</span>),</span><br><span class="line">                   <span class="string">'D'</span>: np.array([<span class="number">3</span>]*<span class="number">4</span>,dtype=<span class="string">'int32'</span>),</span><br><span class="line">                   <span class="string">'E'</span>: pd.Categorical([<span class="string">"test"</span>,<span class="string">'train'</span>,<span class="string">'test'</span>, <span class="string">'train'</span>]),</span><br><span class="line">                   <span class="string">'F'</span>: <span class="string">'foo'</span>&#125;)</span><br><span class="line">print(df2)</span><br><span class="line"><span class="comment">#输出每列数据类型</span></span><br><span class="line">df2.dtypes</span><br><span class="line"><span class="comment">#输出inde</span></span><br><span class="line">df2.index</span><br><span class="line"><span class="comment">#输出column</span></span><br><span class="line">df2.columns</span><br><span class="line"><span class="comment">#输出values</span></span><br><span class="line">df2.values</span><br><span class="line"><span class="comment">#输出描述</span></span><br><span class="line">df2.describe()</span><br><span class="line"><span class="comment">#输出转置矩阵</span></span><br><span class="line">df2.T</span><br></pre></td></tr></table></figure>
+<pre><code>DatetimeIndex([&apos;2019-01-01&apos;, &apos;2019-01-02&apos;, &apos;2019-01-03&apos;, &apos;2019-01-04&apos;,
+               &apos;2019-01-05&apos;, &apos;2019-01-06&apos;],
+              dtype=&apos;datetime64[ns]&apos;, freq=&apos;D&apos;)
+                   a         b         c         d
+2019-01-01  0.673687 -0.775197 -0.820807  0.928025
+2019-01-02 -0.144599 -1.363089 -2.501501 -0.023218
+2019-01-03 -0.713431 -0.361618 -0.310305  0.638569
+2019-01-04  0.468018  0.056090  0.659282 -0.083221
+2019-01-05 -0.173816  2.131823  0.095165 -0.372606
+2019-01-06  0.570283 -0.497360  0.291808  0.074582
+   0  1   2   3
+0  0  1   2   3
+1  4  5   6   7
+2  8  9  10  11
+     A          B    C  D      E    F
+0  1.0 2013-01-02  1.0  3   test  foo
+1  1.0 2013-01-02  1.0  3  train  foo
+2  1.0 2013-01-02  1.0  3   test  foo
+3  1.0 2013-01-02  1.0  3  train  foo
+</code></pre><div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>0</th><br>      <th>1</th><br>      <th>2</th><br>      <th>3</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>A</th><br>      <td>1</td><br>      <td>1</td><br>      <td>1</td><br>      <td>1</td><br>    </tr><br>    <tr><br>      <th>B</th><br>      <td>2013-01-02 00:00:00</td><br>      <td>2013-01-02 00:00:00</td><br>      <td>2013-01-02 00:00:00</td><br>      <td>2013-01-02 00:00:00</td><br>    </tr><br>    <tr><br>      <th>C</th><br>      <td>1</td><br>      <td>1</td><br>      <td>1</td><br>      <td>1</td><br>    </tr><br>    <tr><br>      <th>D</th><br>      <td>3</td><br>      <td>3</td><br>      <td>3</td><br>      <td>3</td><br>    </tr><br>    <tr><br>      <th>E</th><br>      <td>test</td><br>      <td>train</td><br>      <td>test</td><br>      <td>train</td><br>    </tr><br>    <tr><br>      <th>F</th><br>      <td>foo</td><br>      <td>foo</td><br>      <td>foo</td><br>      <td>foo</td><br>    </tr><br>  </tbody><br></table><br></div>
+
+
+
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">print(df2)</span><br><span class="line"><span class="comment">#按index排序</span></span><br><span class="line">df2.sort_index(axis=<span class="number">1</span>, ascending=<span class="keyword">False</span>)</span><br><span class="line">df2.sort_index(axis=<span class="number">0</span>, ascending=<span class="keyword">False</span>)</span><br><span class="line"><span class="comment">#按某一列值排序</span></span><br><span class="line">df2.sort_values(by=<span class="string">'E'</span>,ascending=<span class="keyword">False</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>     A          B    C  D      E    F
+0  1.0 2013-01-02  1.0  3   test  foo
+1  1.0 2013-01-02  1.0  3  train  foo
+2  1.0 2013-01-02  1.0  3   test  foo
+3  1.0 2013-01-02  1.0  3  train  foo
+</code></pre><div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>A</th><br>      <th>B</th><br>      <th>C</th><br>      <th>D</th><br>      <th>E</th><br>      <th>F</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>3</th><br>      <td>1.0</td><br>      <td>2013-01-02</td><br>      <td>1.0</td><br>      <td>3</td><br>      <td>train</td><br>      <td>foo</td><br>    </tr><br>    <tr><br>      <th>1</th><br>      <td>1.0</td><br>      <td>2013-01-02</td><br>      <td>1.0</td><br>      <td>3</td><br>      <td>train</td><br>      <td>foo</td><br>    </tr><br>    <tr><br>      <th>2</th><br>      <td>1.0</td><br>      <td>2013-01-02</td><br>      <td>1.0</td><br>      <td>3</td><br>      <td>test</td><br>      <td>foo</td><br>    </tr><br>    <tr><br>      <th>0</th><br>      <td>1.0</td><br>      <td>2013-01-02</td><br>      <td>1.0</td><br>      <td>3</td><br>      <td>test</td><br>      <td>foo</td><br>    </tr><br>  </tbody><br></table><br></div>
+
+
+
+<h2 id="选择数据"><a href="#选择数据" class="headerlink" title="选择数据"></a>选择数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dates = pd.date_range(<span class="string">'20130101'</span>, periods=<span class="number">6</span>)</span><br><span class="line">df3 = pd.DataFrame(np.arange(<span class="number">24</span>).reshape((<span class="number">6</span>,<span class="number">4</span>)),index=dates,columns=[<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>,<span class="string">'D'</span>])</span><br><span class="line">print(df3)</span><br></pre></td></tr></table></figure>
+<pre><code>             A   B   C   D
+2013-01-01   0   1   2   3
+2013-01-02   4   5   6   7
+2013-01-03   8   9  10  11
+2013-01-04  12  13  14  15
+2013-01-05  16  17  18  19
+2013-01-06  20  21  22  23
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 选择某一列</span></span><br><span class="line">print(df3[<span class="string">'A'</span>])</span><br></pre></td></tr></table></figure>
+<pre><code>2013-01-01     0
+2013-01-02     4
+2013-01-03     8
+2013-01-04    12
+2013-01-05    16
+2013-01-06    20
+Freq: D, Name: A, dtype: int32
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 选择多行</span></span><br><span class="line">df3[<span class="number">0</span>:<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+<div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>A</th><br>      <th>B</th><br>      <th>C</th><br>      <th>D</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>2013-01-01</th><br>      <td>0</td><br>      <td>1</td><br>      <td>2</td><br>      <td>3</td><br>    </tr><br>    <tr><br>      <th>2013-01-02</th><br>      <td>4</td><br>      <td>5</td><br>      <td>6</td><br>      <td>7</td><br>    </tr><br>    <tr><br>      <th>2013-01-03</th><br>      <td>8</td><br>      <td>9</td><br>      <td>10</td><br>      <td>11</td><br>    </tr><br>  </tbody><br></table><br></div>
+
+
+
+<h2 id="通过标签选择数据-loc"><a href="#通过标签选择数据-loc" class="headerlink" title="通过标签选择数据:loc"></a>通过标签选择数据:loc</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(df3.loc[<span class="string">'20130102'</span>])</span><br><span class="line">print(df3.loc[ : , [<span class="string">'A'</span>, <span class="string">'B'</span>]])</span><br><span class="line">print(df3.loc[<span class="string">'20130102'</span>, [<span class="string">'A'</span>, <span class="string">'B'</span>]])</span><br></pre></td></tr></table></figure>
+<pre><code>A    4
+B    5
+C    6
+D    7
+Name: 2013-01-02 00:00:00, dtype: int32
+             A   B
+2013-01-01   0   1
+2013-01-02   4   5
+2013-01-03   8   9
+2013-01-04  12  13
+2013-01-05  16  17
+2013-01-06  20  21
+A    4
+B    5
+Name: 2013-01-02 00:00:00, dtype: int32
+</code></pre><h2 id="通过位置选择：iloc"><a href="#通过位置选择：iloc" class="headerlink" title="通过位置选择：iloc"></a>通过位置选择：iloc</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print(df3)</span><br><span class="line">print(df3.iloc[<span class="number">3</span>,<span class="number">1</span>])<span class="comment">#选择第3行第1列的数,从0行0列开始</span></span><br><span class="line">print(df3.iloc[:, :<span class="number">2</span>])<span class="comment">#选择第0和第1列</span></span><br><span class="line">print(df3.iloc[<span class="number">0</span>:<span class="number">2</span>, :])<span class="comment">#选择第0和第1行</span></span><br></pre></td></tr></table></figure>
+<pre><code>             A   B   C   D
+2013-01-01   0   1   2   3
+2013-01-02   4   5   6   7
+2013-01-03   8   9  10  11
+2013-01-04  12  13  14  15
+2013-01-05  16  17  18  19
+2013-01-06  20  21  22  23
+13
+             A   B
+2013-01-01   0   1
+2013-01-02   4   5
+2013-01-03   8   9
+2013-01-04  12  13
+2013-01-05  16  17
+2013-01-06  20  21
+            A  B  C  D
+2013-01-01  0  1  2  3
+2013-01-02  4  5  6  7
+</code></pre><h2 id="多方式选择数据：ix-该方式现已不被支持"><a href="#多方式选择数据：ix-该方式现已不被支持" class="headerlink" title="多方式选择数据：ix(该方式现已不被支持)"></a><del>多方式选择数据：ix(该方式现已不被支持)</del></h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(df3)</span><br><span class="line">print(df3.ix[:<span class="number">3</span>, [<span class="string">'A'</span>, <span class="string">'C'</span>]])</span><br></pre></td></tr></table></figure>
+<pre><code>             A   B   C   D
+2013-01-01   0   1   2   3
+2013-01-02   4   5   6   7
+2013-01-03   8   9  10  11
+2013-01-04  12  13  14  15
+2013-01-05  16  17  18  19
+2013-01-06  20  21  22  23
+            A   C
+2013-01-01  0   2
+2013-01-02  4   6
+2013-01-03  8  10
+
+
+C:\ProgramData\Anaconda3\lib\site-packages\ipykernel_launcher.py:2: DeprecationWarning: 
+.ix is deprecated. Please use
+.loc for label based indexing or
+.iloc for positional indexing
+
+See the documentation here:
+http://pandas.pydata.org/pandas-docs/stable/indexing.html#ix-indexer-is-deprecated
+</code></pre><h2 id="Bool布尔选择数据-条件筛选"><a href="#Bool布尔选择数据-条件筛选" class="headerlink" title="Bool布尔选择数据(条件筛选)"></a>Bool布尔选择数据(条件筛选)</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(df3)</span><br><span class="line">print(df3[df3.A &gt; <span class="number">8</span>])<span class="comment">#筛选出A列中大于8的数据</span></span><br></pre></td></tr></table></figure>
+<pre><code>             A   B   C   D
+2013-01-01   0   1   2   3
+2013-01-02   4   5   6   7
+2013-01-03   8   9  10  11
+2013-01-04  12  13  14  15
+2013-01-05  16  17  18  19
+2013-01-06  20  21  22  23
+             A   B   C   D
+2013-01-04  12  13  14  15
+2013-01-05  16  17  18  19
+2013-01-06  20  21  22  23
+</code></pre><h2 id="处理缺失值"><a href="#处理缺失值" class="headerlink" title="处理缺失值"></a>处理缺失值</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">dates = pd.date_range(<span class="string">'20130101'</span>,periods=<span class="number">6</span>)</span><br><span class="line">df4 = pd.DataFrame(np.arange(<span class="number">24</span>).reshape((<span class="number">6</span>,<span class="number">4</span>)),index=dates,columns =[<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>,<span class="string">'D'</span>])</span><br><span class="line">df4.iloc[<span class="number">0</span>, <span class="number">1</span>] = np.nan</span><br><span class="line">df4.iloc[<span class="number">1</span>, <span class="number">2</span>] = np.nan</span><br><span class="line">print(df4)</span><br><span class="line"><span class="comment">#丢弃存在缺失值的行</span></span><br><span class="line">print(df4.dropna(axis=<span class="number">0</span>, how=<span class="string">'any'</span>))</span><br><span class="line"><span class="comment">#丢弃存在缺失值的列</span></span><br><span class="line">print(df4.dropna(axis=<span class="number">1</span>, how=<span class="string">'any'</span>))</span><br><span class="line"><span class="comment">#丢弃全为缺失值的列</span></span><br><span class="line">print(df4.dropna(axis=<span class="number">1</span>, how=<span class="string">'all'</span>))</span><br><span class="line"><span class="comment">#填充缺失值为0</span></span><br><span class="line">print(df4.fillna(value = <span class="number">0</span>))</span><br><span class="line"><span class="comment">#填充缺失值为该列的平均值</span></span><br><span class="line">print(df4.fillna(df4.mean()))</span><br><span class="line"><span class="comment">#检测缺失值</span></span><br><span class="line">print(df4.isnull())</span><br></pre></td></tr></table></figure>
+<pre><code>             A     B     C   D
+2013-01-01   0   NaN   2.0   3
+2013-01-02   4   5.0   NaN   7
+2013-01-03   8   9.0  10.0  11
+2013-01-04  12  13.0  14.0  15
+2013-01-05  16  17.0  18.0  19
+2013-01-06  20  21.0  22.0  23
+             A     B     C   D
+2013-01-03   8   9.0  10.0  11
+2013-01-04  12  13.0  14.0  15
+2013-01-05  16  17.0  18.0  19
+2013-01-06  20  21.0  22.0  23
+             A   D
+2013-01-01   0   3
+2013-01-02   4   7
+2013-01-03   8  11
+2013-01-04  12  15
+2013-01-05  16  19
+2013-01-06  20  23
+             A     B     C   D
+2013-01-01   0   NaN   2.0   3
+2013-01-02   4   5.0   NaN   7
+2013-01-03   8   9.0  10.0  11
+2013-01-04  12  13.0  14.0  15
+2013-01-05  16  17.0  18.0  19
+2013-01-06  20  21.0  22.0  23
+             A     B     C   D
+2013-01-01   0   0.0   2.0   3
+2013-01-02   4   5.0   0.0   7
+2013-01-03   8   9.0  10.0  11
+2013-01-04  12  13.0  14.0  15
+2013-01-05  16  17.0  18.0  19
+2013-01-06  20  21.0  22.0  23
+             A     B     C   D
+2013-01-01   0  13.0   2.0   3
+2013-01-02   4   5.0  13.2   7
+2013-01-03   8   9.0  10.0  11
+2013-01-04  12  13.0  14.0  15
+2013-01-05  16  17.0  18.0  19
+2013-01-06  20  21.0  22.0  23
+                A      B      C      D
+2013-01-01  False   True  False  False
+2013-01-02  False  False   True  False
+2013-01-03  False  False  False  False
+2013-01-04  False  False  False  False
+2013-01-05  False  False  False  False
+2013-01-06  False  False  False  False
+</code></pre><h2 id="导入导出数据"><a href="#导入导出数据" class="headerlink" title="导入导出数据"></a>导入导出数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#读取</span></span><br><span class="line">pd.read_csv(path,seq=<span class="string">'\t'</span>)<span class="comment">#用于读txt文本文件时需定义seq=''定义分割符</span></span><br><span class="line">pd.read_excel(path,)</span><br><span class="line">pd.read_html(path,)</span><br><span class="line"><span class="comment">#导出</span></span><br><span class="line">pd.to_csv(path,)</span><br><span class="line">pd.to_excel(path,)</span><br></pre></td></tr></table></figure>
+<h2 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">df11 = pd.DataFrame(np.ones((<span class="number">3</span>, <span class="number">4</span>))*<span class="number">0</span>, columns=[<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'d'</span>])</span><br><span class="line">df22 = pd.DataFrame(np.ones((<span class="number">3</span>, <span class="number">4</span>))*<span class="number">1</span>, columns=[<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'d'</span>])</span><br><span class="line">df33 = pd.DataFrame(np.ones((<span class="number">3</span>, <span class="number">4</span>))*<span class="number">2</span>, columns=[<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'d'</span>])</span><br><span class="line">print(df11, df22, df33)</span><br><span class="line">print(pd.concat([df11,df22,df33],axis=<span class="number">0</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>     a    b    c    d
+0  0.0  0.0  0.0  0.0
+1  0.0  0.0  0.0  0.0
+2  0.0  0.0  0.0  0.0      a    b    c    d
+0  1.0  1.0  1.0  1.0
+1  1.0  1.0  1.0  1.0
+2  1.0  1.0  1.0  1.0      a    b    c    d
+0  2.0  2.0  2.0  2.0
+1  2.0  2.0  2.0  2.0
+2  2.0  2.0  2.0  2.0
+     a    b    c    d
+0  0.0  0.0  0.0  0.0
+1  0.0  0.0  0.0  0.0
+2  0.0  0.0  0.0  0.0
+0  1.0  1.0  1.0  1.0
+1  1.0  1.0  1.0  1.0
+2  1.0  1.0  1.0  1.0
+0  2.0  2.0  2.0  2.0
+1  2.0  2.0  2.0  2.0
+2  2.0  2.0  2.0  2.0
+</code></pre><h2 id="merge合并"><a href="#merge合并" class="headerlink" title="merge合并"></a>merge合并</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">left = pd.DataFrame(&#123;<span class="string">'key'</span>:[<span class="string">'k0'</span>, <span class="string">'k2'</span>, <span class="string">'k3'</span>, <span class="string">'k4'</span>],</span><br><span class="line">              <span class="string">'A'</span>:[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>],</span><br><span class="line">              <span class="string">'B'</span>:[<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>],</span><br><span class="line">              <span class="string">'C'</span>:[<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>]&#125;)</span><br><span class="line">right = pd.DataFrame(&#123;<span class="string">'key'</span>:[<span class="string">'k0'</span>, <span class="string">'k2'</span>, <span class="string">'k3'</span>, <span class="string">'k4'</span>],</span><br><span class="line">              <span class="string">'E'</span>:[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>],</span><br><span class="line">              <span class="string">'F'</span>:[<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>],</span><br><span class="line">              <span class="string">'G'</span>:[<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>]&#125;)</span><br><span class="line">total = pd.merge(left, right, on=<span class="string">'key'</span>)</span><br><span class="line">print(total)</span><br></pre></td></tr></table></figure>
+<pre><code>  key  A  B  C  E  F  G
+0  k0  1  5  2  1  5  2
+1  k2  2  6  4  2  6  4
+2  k3  3  7  6  3  7  6
+3  k4  4  8  8  4  8  8
+</code></pre><h2 id="plot图表"><a href="#plot图表" class="headerlink" title="plot图表"></a>plot图表</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">data = pd.Series(np.random.randn(<span class="number">1000</span>),index=np.arange(<span class="number">1000</span>))</span><br><span class="line">data = data.cumsum()</span><br><span class="line">print(data)</span><br><span class="line">data.plot()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<pre><code>0      -0.038758
+1       1.194976
+2       2.895250
+3       2.915834
+4       0.501214
+5       2.511664
+6       1.231022
+7       0.981318
+8      -1.260096
+9      -1.165160
+10     -0.403735
+11     -2.105983
+12     -1.554743
+13     -0.055939
+14     -0.527321
+15     -0.978687
+16     -0.069414
+17     -1.383085
+18     -1.659076
+19     -1.973426
+20     -2.910417
+21     -2.427762
+22     -2.326099
+23     -0.364917
+24      0.245591
+25     -0.097504
+26     -1.501229
+27     -1.875637
+28     -1.486811
+29     -1.187960
+         ...    
+970    14.658425
+971    14.023073
+972    14.684753
+973    14.482177
+974    14.698712
+975    14.611241
+976    12.517253
+977    11.545272
+978    11.685023
+979    10.714326
+980     9.366165
+981     8.245778
+982     8.341156
+983     8.598774
+984     8.622185
+985    10.172707
+986     8.785854
+987     8.500791
+988     8.197383
+989     7.213132
+990     5.074362
+991     4.967236
+992     6.220900
+993     6.473351
+994     7.345129
+995     6.189166
+996     7.517184
+997     5.893670
+998     5.416785
+999     5.306557
+Length: 1000, dtype: float64
+</code></pre><p><img src="output_30_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://frankxff.github.io/2019/05/02/Numpy笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Frankxff">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Frankxff's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/02/Numpy笔记/" itemprop="url">Numpy笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-02T13:38:55+08:00">
+                2019-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ML/" itemprop="url" rel="index">
+                    <span itemprop="name">ML</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>numpy是用于矩阵运算的python模块</p>
+<h2 id="导入numpy"><a href="#导入numpy" class="headerlink" title="导入numpy"></a>导入numpy</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+<h2 id="创建矩阵-amp-数组"><a href="#创建矩阵-amp-数组" class="headerlink" title="创建矩阵&amp;数组"></a>创建矩阵&amp;数组</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">array = np.array([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">                  [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>],</span><br><span class="line">                  [<span class="number">7</span>, <span class="number">8</span>, <span class="number">5</span>]])</span><br><span class="line">print(array)</span><br></pre></td></tr></table></figure>
+<pre><code>[[1 2 3]
+ [2 3 4]
+ [7 8 5]]
+</code></pre><h3 id="矩阵维度"><a href="#矩阵维度" class="headerlink" title="矩阵维度"></a>矩阵维度</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'number of dim:'</span>, array.ndim)<span class="comment">#维度</span></span><br></pre></td></tr></table></figure>
+<pre><code>number of dim: 2
+</code></pre><h3 id="矩阵行列数"><a href="#矩阵行列数" class="headerlink" title="矩阵行列数"></a>矩阵行列数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'shape:'</span>, array.shape)</span><br><span class="line">print(<span class="string">'matrix\'s row is:'</span>, array.shape[<span class="number">0</span>], <span class="string">'; columns is:'</span>, array.shape[<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+<pre><code>shape: (3, 3)
+matrix&apos;s row is: 3 ; columns is: 3
+</code></pre><h3 id="矩阵元素个数"><a href="#矩阵元素个数" class="headerlink" title="矩阵元素个数"></a>矩阵元素个数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'size:'</span>, array.size)</span><br></pre></td></tr></table></figure>
+<pre><code>size: 9
+</code></pre><h3 id="生成全为0的矩阵"><a href="#生成全为0的矩阵" class="headerlink" title="生成全为0的矩阵"></a>生成全为0的矩阵</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zero_a = np.zeros((<span class="number">3</span>, <span class="number">4</span>)) <span class="comment">#生成 3 行 4 列的 0 矩阵</span></span><br><span class="line">print(zero_a)</span><br></pre></td></tr></table></figure>
+<pre><code>[[0. 0. 0. 0.]
+ [0. 0. 0. 0.]
+ [0. 0. 0. 0.]]
+</code></pre><h3 id="生成元素全部为-1-的矩阵"><a href="#生成元素全部为-1-的矩阵" class="headerlink" title="生成元素全部为 1 的矩阵"></a>生成元素全部为 1 的矩阵</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zero_a = np.ones((<span class="number">3</span>, <span class="number">4</span>), dtype = np.int16) <span class="comment">#生成 3 行 4 列的元素全为 1 矩阵</span></span><br><span class="line">print(zero_a)</span><br></pre></td></tr></table></figure>
+<pre><code>[[1 1 1 1]
+ [1 1 1 1]
+ [1 1 1 1]]
+</code></pre><h3 id="生成一个初始化矩阵"><a href="#生成一个初始化矩阵" class="headerlink" title="生成一个初始化矩阵"></a>生成一个初始化矩阵</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">init_a = np.empty((<span class="number">3</span>,<span class="number">4</span>))</span><br><span class="line">print(init_a)</span><br></pre></td></tr></table></figure>
+<pre><code>[[0. 0. 0. 0.]
+ [0. 0. 0. 0.]
+ [0. 0. 0. 0.]]
+</code></pre><h3 id="初始化一个递增矩阵"><a href="#初始化一个递增矩阵" class="headerlink" title="初始化一个递增矩阵"></a>初始化一个递增矩阵</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">incr_a = np.arange(<span class="number">10</span>, <span class="number">20</span>, <span class="number">2</span>)</span><br><span class="line">print(incr_a)</span><br><span class="line">print(<span class="string">'\n'</span>)</span><br><span class="line">incr_a1 = np.arange(<span class="number">12</span>).reshape((<span class="number">3</span>,<span class="number">4</span>))</span><br><span class="line">print(incr_a1)</span><br></pre></td></tr></table></figure>
+<pre><code>[10 12 14 16 18]
+
+
+[[ 0  1  2  3]
+ [ 4  5  6  7]
+ [ 8  9 10 11]]
+</code></pre><h3 id="生成线性矩阵"><a href="#生成线性矩阵" class="headerlink" title="生成线性矩阵"></a>生成线性矩阵</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">line_a = np.linspace(<span class="number">1</span>,<span class="number">10</span>,<span class="number">6</span>)</span><br><span class="line">print(line_a)</span><br><span class="line">line_b = np.linspace(<span class="number">1</span>,<span class="number">10</span>,<span class="number">6</span>).reshape((<span class="number">2</span>,<span class="number">3</span>))</span><br><span class="line">print(line_b)</span><br></pre></td></tr></table></figure>
+<pre><code>[ 1.   2.8  4.6  6.4  8.2 10. ]
+[[ 1.   2.8  4.6]
+ [ 6.4  8.2 10. ]]
+</code></pre><h2 id="定义数据类型"><a href="#定义数据类型" class="headerlink" title="定义数据类型"></a>定义数据类型</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int32_a = np.array([<span class="number">2</span>, <span class="number">23</span>, <span class="number">4</span>], dtype = np.int)</span><br><span class="line">int64_a = np.array([<span class="number">2</span>, <span class="number">23</span>, <span class="number">4</span>], dtype = np.int64)</span><br><span class="line">float_a = np.array([<span class="number">2</span>, <span class="number">23</span>, <span class="number">4</span>], dtype = np.float)</span><br><span class="line">print(int32_a.dtype)</span><br><span class="line">print(int64_a.dtype)</span><br><span class="line">print(float_a.dtype)</span><br></pre></td></tr></table></figure>
+<pre><code>int32
+int64
+float64
+</code></pre><h2 id="基础运算"><a href="#基础运算" class="headerlink" title="基础运算"></a>基础运算</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a = np.array([<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>])</span><br><span class="line">b = np.arange(<span class="number">4</span>)</span><br><span class="line">print(a, b)</span><br><span class="line">print( a + b)</span><br><span class="line">print( a - b)</span><br><span class="line">c = b * <span class="number">2</span></span><br><span class="line">print(c)</span><br><span class="line">d = <span class="number">10</span>*np.sin(a)</span><br><span class="line">print(d)</span><br></pre></td></tr></table></figure>
+<pre><code>[10 20 30 40] [0 1 2 3]
+[10 21 32 43]
+[10 19 28 37]
+[0 2 4 6]
+[-5.44021111  9.12945251 -9.88031624  7.4511316 ]
+</code></pre><h3 id="矩阵元素与固定值比较（返回布尔值）"><a href="#矩阵元素与固定值比较（返回布尔值）" class="headerlink" title="矩阵元素与固定值比较（返回布尔值）"></a>矩阵元素与固定值比较（返回布尔值）</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = np.array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">5</span>])</span><br><span class="line">bool_x = x &lt; <span class="number">3</span></span><br><span class="line">print(bool_x)</span><br><span class="line"><span class="comment">#根据布尔0/1的特征可通过mean算平均数间接计算矩阵x中小于3的个数占比</span></span><br><span class="line">ratio = bool_x.mean()</span><br><span class="line">print(ratio)</span><br></pre></td></tr></table></figure>
+<pre><code>[ True  True False  True False False]
+0.5
+</code></pre><h3 id="矩阵的数学运算"><a href="#矩阵的数学运算" class="headerlink" title="矩阵的数学运算"></a>矩阵的数学运算</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">met_a = np.array([[<span class="number">1</span>, <span class="number">1</span>],</span><br><span class="line">                 [<span class="number">0</span>, <span class="number">1</span>]])</span><br><span class="line">met_b = np.arange(<span class="number">4</span>).reshape(<span class="number">2</span>,<span class="number">2</span>)</span><br><span class="line">print(met_a,<span class="string">'\n'</span>, met_b)</span><br></pre></td></tr></table></figure>
+<pre><code>[[1 1]
+ [0 1]] 
+ [[0 1]
+ [2 3]]
+</code></pre><h3 id="矩阵乘法"><a href="#矩阵乘法" class="headerlink" title="矩阵乘法"></a>矩阵乘法</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">met_c = np.dot(met_a, met_b)</span><br><span class="line">print(met_c)</span><br></pre></td></tr></table></figure>
+<pre><code>[[2 4]
+ [2 3]]
+</code></pre><h3 id="矩阵中元素总和-最大元素-最小元素"><a href="#矩阵中元素总和-最大元素-最小元素" class="headerlink" title="矩阵中元素总和/最大元素/最小元素"></a>矩阵中元素总和/最大元素/最小元素</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">random_x = np.random.random((<span class="number">2</span>,<span class="number">4</span>))</span><br><span class="line">print(random_x)</span><br><span class="line">print(np.sum(random_x))<span class="comment">#元素总和</span></span><br><span class="line">print(np.max(random_x))<span class="comment">#最大元素</span></span><br><span class="line">print(np.min(random_x))<span class="comment">#最小元素</span></span><br><span class="line">print(np.sum(random_x,axis=<span class="number">0</span>))<span class="comment">#每列总和</span></span><br><span class="line">print(np.max(random_x,axis=<span class="number">1</span>))<span class="comment">#每行最小值</span></span><br></pre></td></tr></table></figure>
+<pre><code>[[0.91449287 0.37559296 0.56495425 0.20452983]
+ [0.01577424 0.24597939 0.55966043 0.25781305]]
+3.138797024935735
+0.9144928731156913
+0.015774239730741213
+[0.93026711 0.62157235 1.12461468 0.46234288]
+[0.91449287 0.55966043]
+</code></pre><h3 id="查找最小值和最大值的索引、平均值、中位数、累加、累差"><a href="#查找最小值和最大值的索引、平均值、中位数、累加、累差" class="headerlink" title="查找最小值和最大值的索引、平均值、中位数、累加、累差"></a>查找最小值和最大值的索引、平均值、中位数、累加、累差</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">A = np.arange(<span class="number">2</span>, <span class="number">14</span>).reshape((<span class="number">3</span>, <span class="number">4</span>))</span><br><span class="line">print(A)</span><br><span class="line"><span class="comment">#最小值的索引</span></span><br><span class="line">min_index = np.argmin(A)</span><br><span class="line"><span class="comment">#最大值的索引</span></span><br><span class="line">max_index = np.argmax(A)</span><br><span class="line">print(A)</span><br><span class="line">print(min_index, max_index)</span><br><span class="line"><span class="comment">#平均值</span></span><br><span class="line">print(np.mean(A))</span><br><span class="line">print(np.mean(A, axis=<span class="number">0</span>))<span class="comment">#每列的平均值</span></span><br><span class="line">print(np.mean(A, axis=<span class="number">1</span>))<span class="comment">#每行的平均值</span></span><br><span class="line">print(np.average(A))</span><br><span class="line">print(A.mean())</span><br><span class="line"><span class="comment">#中位数</span></span><br><span class="line">print(np.median(A))</span><br><span class="line"><span class="comment">#输出累计数组结果</span></span><br><span class="line">print(np.cumsum(A))</span><br><span class="line"><span class="comment">#累差</span></span><br><span class="line">print(np.diff(A))</span><br></pre></td></tr></table></figure>
+<pre><code>[[ 2  3  4  5]
+ [ 6  7  8  9]
+ [10 11 12 13]]
+[[ 2  3  4  5]
+ [ 6  7  8  9]
+ [10 11 12 13]]
+0 11
+7.5
+[6. 7. 8. 9.]
+[ 3.5  7.5 11.5]
+7.5
+7.5
+7.5
+[ 2  5  9 14 20 27 35 44 54 65 77 90]
+[[1 1 1]
+ [1 1 1]
+ [1 1 1]]
+</code></pre><h3 id="数组逐行排序、转置、指定矩阵元素上下限"><a href="#数组逐行排序、转置、指定矩阵元素上下限" class="headerlink" title="数组逐行排序、转置、指定矩阵元素上下限"></a>数组逐行排序、转置、指定矩阵元素上下限</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">B = np.array([[<span class="number">9</span>, <span class="number">8</span>, <span class="number">7</span>],</span><br><span class="line">              [<span class="number">6</span>, <span class="number">5</span>, <span class="number">4</span>],</span><br><span class="line">              [<span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>]])</span><br><span class="line">print(B)</span><br><span class="line"><span class="comment">#逐行排序</span></span><br><span class="line">print(np.sort(B))</span><br><span class="line"><span class="comment">#转置</span></span><br><span class="line">print(B.T)</span><br><span class="line"><span class="comment">#指定矩阵元素上下限</span></span><br><span class="line">print(np.clip(B, <span class="number">5</span>, <span class="number">9</span>))<span class="comment">#即矩阵中小于5的元素均置为5，大于9的元素均置为9</span></span><br></pre></td></tr></table></figure>
+<pre><code>[[9 8 7]
+ [6 5 4]
+ [3 2 1]]
+[[7 8 9]
+ [4 5 6]
+ [1 2 3]]
+[[9 6 3]
+ [8 5 2]
+ [7 4 1]]
+[[9 8 7]
+ [6 5 5]
+ [5 5 5]]
+</code></pre><h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#一维数组</span></span><br><span class="line">C = np.arange(<span class="number">3</span>, <span class="number">15</span>)</span><br><span class="line">print(C)</span><br><span class="line"><span class="comment">#下标索引值，从0开始</span></span><br><span class="line">print(C[<span class="number">3</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">#二维数组</span></span><br><span class="line">D = np.arange(<span class="number">3</span>, <span class="number">15</span>).reshape(<span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line">print(D)</span><br><span class="line"><span class="comment">#索引第2行第3列的值,从0行0列开始</span></span><br><span class="line">print(D[<span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line"><span class="comment">#索引第3列的值</span></span><br><span class="line">print(D[:, <span class="number">3</span>])</span><br><span class="line"><span class="comment">#索引第1第2行第3列的值</span></span><br><span class="line">print(D[<span class="number">1</span>:<span class="number">3</span>, <span class="number">3</span>])</span><br><span class="line"><span class="comment"># 迭代输出一维数组和二维数组的值</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> C:</span><br><span class="line">    print(item)</span><br><span class="line"><span class="comment">#.flat将多维数组转为一维数组</span></span><br><span class="line">print(D.flatten())</span><br><span class="line"><span class="keyword">for</span> items <span class="keyword">in</span> D.flat:</span><br><span class="line">    print(items)</span><br></pre></td></tr></table></figure>
+<pre><code>[ 3  4  5  6  7  8  9 10 11 12 13 14]
+6
+[[ 3  4  5  6]
+ [ 7  8  9 10]
+ [11 12 13 14]]
+14
+[ 6 10 14]
+[10 14]
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+[ 3  4  5  6  7  8  9 10 11 12 13 14]
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</code></pre><h2 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">F = np.array([<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>])</span><br><span class="line">G = np.array([<span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>])</span><br><span class="line">print(np.vstack((F, G)))</span><br><span class="line">print(np.hstack((F, G)))</span><br><span class="line">print(np.concatenate((F, G, F, F), axis=<span class="number">0</span>))<span class="comment">#横向合并</span></span><br></pre></td></tr></table></figure>
+<pre><code>[[1 1 1]
+ [2 2 2]]
+[1 1 1 2 2 2]
+[1 1 1 2 2 2 1 1 1 1 1 1]
+</code></pre><h2 id="分割"><a href="#分割" class="headerlink" title="分割"></a>分割</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">m = np.arange(<span class="number">12</span>).reshape(<span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line">print(m)</span><br><span class="line">print(np.split(m, <span class="number">2</span>, axis=<span class="number">1</span>))</span><br><span class="line">print(np.split(m, <span class="number">3</span>, axis=<span class="number">0</span>))</span><br><span class="line"><span class="comment">#横向分割</span></span><br><span class="line">print(np.vsplit(m, <span class="number">3</span>))</span><br><span class="line"><span class="comment">#纵向分割</span></span><br><span class="line">print(np.hsplit(m, <span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>[[ 0  1  2  3]
+ [ 4  5  6  7]
+ [ 8  9 10 11]]
+[array([[0, 1],
+       [4, 5],
+       [8, 9]]), array([[ 2,  3],
+       [ 6,  7],
+       [10, 11]])]
+[array([[0, 1, 2, 3]]), array([[4, 5, 6, 7]]), array([[ 8,  9, 10, 11]])]
+[array([[0, 1, 2, 3]]), array([[4, 5, 6, 7]]), array([[ 8,  9, 10, 11]])]
+[array([[0, 1],
+       [4, 5],
+       [8, 9]]), array([[ 2,  3],
+       [ 6,  7],
+       [10, 11]])]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">X = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line">Y = X</span><br><span class="line">print(X == Y)</span><br><span class="line"><span class="number">1</span> == (X <span class="keyword">is</span> Y)</span><br></pre></td></tr></table></figure>
+<pre><code>[ True  True  True]
+
+
+
+
+
+True
+</code></pre><h2 id="深浅拷贝"><a href="#深浅拷贝" class="headerlink" title="深浅拷贝"></a>深浅拷贝</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#浅拷贝</span></span><br><span class="line">N = np.array([<span class="number">1</span>, <span class="number">2</span> ,<span class="number">3</span>])</span><br><span class="line">P = N</span><br><span class="line">P[<span class="number">0</span>] = <span class="number">9</span></span><br><span class="line">print(N)</span><br><span class="line"><span class="comment">#深拷贝</span></span><br><span class="line">N = np.array([<span class="number">1</span>, <span class="number">2</span> ,<span class="number">3</span>])</span><br><span class="line">P = N.copy()</span><br><span class="line">P[<span class="number">0</span>] = <span class="number">9</span></span><br><span class="line">print(N, P)</span><br></pre></td></tr></table></figure>
+<pre><code>[9 2 3]
+[1 2 3] [9 2 3]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://frankxff.github.io/2019/05/02/函数参数理解 - 副本/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1654,291 +2374,13 @@ z = 3;
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://frankxff.github.io/2018/05/20/here - 副本/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Frankxff">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Frankxff's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/20/here - 副本/" itemprop="url">welcome to here!</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-20T19:51:55+08:00">
-                2018-05-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/spider/" itemprop="url" rel="index">
-                    <span itemprop="name">spider</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://frankxff.github.io/2018/05/20/here/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Frankxff">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Frankxff's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/20/here/" itemprop="url">welcome to here!</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-20T11:34:44+08:00">
-                2018-05-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/program/" itemprop="url" rel="index">
-                    <span itemprop="name">program</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1982,7 +2424,7 @@ z = 3;
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2004,7 +2446,7 @@ z = 3;
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

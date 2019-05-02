@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Pandas," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="导入Pandas12import pandas as pdimport numpy as np 创建序列12s = pd.Series([1, 3, 6, np.nan, 44, 1])print(s) 0     1.0 1     3.0 2     6.0 3     NaN 4    44.0 5     1.0 dtype: float64 创建DataFrame123456789101">
+<meta name="keywords" content="Pandas">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pandas笔记">
+<meta property="og:url" content="https://frankxff.github.io/2019/05/02/Pandas笔记/index.html">
+<meta property="og:site_name" content="Frankxff&#39;s Blog">
+<meta property="og:description" content="导入Pandas12import pandas as pdimport numpy as np 创建序列12s = pd.Series([1, 3, 6, np.nan, 44, 1])print(s) 0     1.0 1     3.0 2     6.0 3     NaN 4    44.0 5     1.0 dtype: float64 创建DataFrame123456789101">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://frankxff.github.io/2019/05/02/Pandas笔记/output_30_1.png">
+<meta property="og:updated_time" content="2019-05-02T05:45:57.640Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pandas笔记">
+<meta name="twitter:description" content="导入Pandas12import pandas as pdimport numpy as np 创建序列12s = pd.Series([1, 3, 6, np.nan, 44, 1])print(s) 0     1.0 1     3.0 2     6.0 3     NaN 4    44.0 5     1.0 dtype: float64 创建DataFrame123456789101">
+<meta name="twitter:image" content="https://frankxff.github.io/2019/05/02/Pandas笔记/output_30_1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://frankxff.github.io/2019/05/02/Pandas笔记/"/>
+
+
+
+
+
+  <title>Pandas笔记 | Frankxff's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Frankxff's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">小飞的菜园子~</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-program">
+          <a href="/categories/program" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />
+            
+            程序语言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-spider">
+          <a href="/categories/spider" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-bug"></i> <br />
+            
+            网络爬虫
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-ml">
+          <a href="/categories/ML" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-desktop"></i> <br />
+            
+            机器学习
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://frankxff.github.io/2019/05/02/Pandas笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Frankxff">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Frankxff's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Pandas笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-02T13:40:49+08:00">
+                2019-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ML/" itemprop="url" rel="index">
+                    <span itemprop="name">ML</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="导入Pandas"><a href="#导入Pandas" class="headerlink" title="导入Pandas"></a>导入Pandas</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+<h1 id="创建序列"><a href="#创建序列" class="headerlink" title="创建序列"></a>创建序列</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s = pd.Series([<span class="number">1</span>, <span class="number">3</span>, <span class="number">6</span>, np.nan, <span class="number">44</span>, <span class="number">1</span>])</span><br><span class="line">print(s)</span><br></pre></td></tr></table></figure>
+<pre><code>0     1.0
+1     3.0
+2     6.0
+3     NaN
+4    44.0
+5     1.0
+dtype: float64
+</code></pre><h1 id="创建DataFrame"><a href="#创建DataFrame" class="headerlink" title="创建DataFrame"></a>创建DataFrame</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#导入方式1</span></span><br><span class="line">dates = pd.date_range(<span class="string">'20190101'</span>, periods=<span class="number">6</span>)</span><br><span class="line">print(dates)</span><br><span class="line">df = pd.DataFrame(np.random.randn(<span class="number">6</span>,<span class="number">4</span>), index = dates, columns=[<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'d'</span>])</span><br><span class="line">print(df)</span><br><span class="line"><span class="comment">#导入方式2</span></span><br><span class="line">data = pd.DataFrame(np.arange(<span class="number">12</span>).reshape(<span class="number">3</span>, <span class="number">4</span>))</span><br><span class="line">print(data)</span><br><span class="line"><span class="comment">#自定义字典方式</span></span><br><span class="line">df2 = pd.DataFrame(&#123;<span class="string">'A'</span>: <span class="number">1.</span>,</span><br><span class="line">                   <span class="string">'B'</span>: pd.Timestamp(<span class="string">'20130102'</span>),</span><br><span class="line">                   <span class="string">'C'</span>: pd.Series(<span class="number">1</span>, index=list(range(<span class="number">4</span>)),dtype=<span class="string">'float32'</span>),</span><br><span class="line">                   <span class="string">'D'</span>: np.array([<span class="number">3</span>]*<span class="number">4</span>,dtype=<span class="string">'int32'</span>),</span><br><span class="line">                   <span class="string">'E'</span>: pd.Categorical([<span class="string">"test"</span>,<span class="string">'train'</span>,<span class="string">'test'</span>, <span class="string">'train'</span>]),</span><br><span class="line">                   <span class="string">'F'</span>: <span class="string">'foo'</span>&#125;)</span><br><span class="line">print(df2)</span><br><span class="line"><span class="comment">#输出每列数据类型</span></span><br><span class="line">df2.dtypes</span><br><span class="line"><span class="comment">#输出inde</span></span><br><span class="line">df2.index</span><br><span class="line"><span class="comment">#输出column</span></span><br><span class="line">df2.columns</span><br><span class="line"><span class="comment">#输出values</span></span><br><span class="line">df2.values</span><br><span class="line"><span class="comment">#输出描述</span></span><br><span class="line">df2.describe()</span><br><span class="line"><span class="comment">#输出转置矩阵</span></span><br><span class="line">df2.T</span><br></pre></td></tr></table></figure>
+<pre><code>DatetimeIndex([&apos;2019-01-01&apos;, &apos;2019-01-02&apos;, &apos;2019-01-03&apos;, &apos;2019-01-04&apos;,
+               &apos;2019-01-05&apos;, &apos;2019-01-06&apos;],
+              dtype=&apos;datetime64[ns]&apos;, freq=&apos;D&apos;)
+                   a         b         c         d
+2019-01-01  0.673687 -0.775197 -0.820807  0.928025
+2019-01-02 -0.144599 -1.363089 -2.501501 -0.023218
+2019-01-03 -0.713431 -0.361618 -0.310305  0.638569
+2019-01-04  0.468018  0.056090  0.659282 -0.083221
+2019-01-05 -0.173816  2.131823  0.095165 -0.372606
+2019-01-06  0.570283 -0.497360  0.291808  0.074582
+   0  1   2   3
+0  0  1   2   3
+1  4  5   6   7
+2  8  9  10  11
+     A          B    C  D      E    F
+0  1.0 2013-01-02  1.0  3   test  foo
+1  1.0 2013-01-02  1.0  3  train  foo
+2  1.0 2013-01-02  1.0  3   test  foo
+3  1.0 2013-01-02  1.0  3  train  foo
+</code></pre><div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>0</th><br>      <th>1</th><br>      <th>2</th><br>      <th>3</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>A</th><br>      <td>1</td><br>      <td>1</td><br>      <td>1</td><br>      <td>1</td><br>    </tr><br>    <tr><br>      <th>B</th><br>      <td>2013-01-02 00:00:00</td><br>      <td>2013-01-02 00:00:00</td><br>      <td>2013-01-02 00:00:00</td><br>      <td>2013-01-02 00:00:00</td><br>    </tr><br>    <tr><br>      <th>C</th><br>      <td>1</td><br>      <td>1</td><br>      <td>1</td><br>      <td>1</td><br>    </tr><br>    <tr><br>      <th>D</th><br>      <td>3</td><br>      <td>3</td><br>      <td>3</td><br>      <td>3</td><br>    </tr><br>    <tr><br>      <th>E</th><br>      <td>test</td><br>      <td>train</td><br>      <td>test</td><br>      <td>train</td><br>    </tr><br>    <tr><br>      <th>F</th><br>      <td>foo</td><br>      <td>foo</td><br>      <td>foo</td><br>      <td>foo</td><br>    </tr><br>  </tbody><br></table><br></div>
+
+
+
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">print(df2)</span><br><span class="line"><span class="comment">#按index排序</span></span><br><span class="line">df2.sort_index(axis=<span class="number">1</span>, ascending=<span class="keyword">False</span>)</span><br><span class="line">df2.sort_index(axis=<span class="number">0</span>, ascending=<span class="keyword">False</span>)</span><br><span class="line"><span class="comment">#按某一列值排序</span></span><br><span class="line">df2.sort_values(by=<span class="string">'E'</span>,ascending=<span class="keyword">False</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>     A          B    C  D      E    F
+0  1.0 2013-01-02  1.0  3   test  foo
+1  1.0 2013-01-02  1.0  3  train  foo
+2  1.0 2013-01-02  1.0  3   test  foo
+3  1.0 2013-01-02  1.0  3  train  foo
+</code></pre><div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>A</th><br>      <th>B</th><br>      <th>C</th><br>      <th>D</th><br>      <th>E</th><br>      <th>F</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>3</th><br>      <td>1.0</td><br>      <td>2013-01-02</td><br>      <td>1.0</td><br>      <td>3</td><br>      <td>train</td><br>      <td>foo</td><br>    </tr><br>    <tr><br>      <th>1</th><br>      <td>1.0</td><br>      <td>2013-01-02</td><br>      <td>1.0</td><br>      <td>3</td><br>      <td>train</td><br>      <td>foo</td><br>    </tr><br>    <tr><br>      <th>2</th><br>      <td>1.0</td><br>      <td>2013-01-02</td><br>      <td>1.0</td><br>      <td>3</td><br>      <td>test</td><br>      <td>foo</td><br>    </tr><br>    <tr><br>      <th>0</th><br>      <td>1.0</td><br>      <td>2013-01-02</td><br>      <td>1.0</td><br>      <td>3</td><br>      <td>test</td><br>      <td>foo</td><br>    </tr><br>  </tbody><br></table><br></div>
+
+
+
+<h2 id="选择数据"><a href="#选择数据" class="headerlink" title="选择数据"></a>选择数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dates = pd.date_range(<span class="string">'20130101'</span>, periods=<span class="number">6</span>)</span><br><span class="line">df3 = pd.DataFrame(np.arange(<span class="number">24</span>).reshape((<span class="number">6</span>,<span class="number">4</span>)),index=dates,columns=[<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>,<span class="string">'D'</span>])</span><br><span class="line">print(df3)</span><br></pre></td></tr></table></figure>
+<pre><code>             A   B   C   D
+2013-01-01   0   1   2   3
+2013-01-02   4   5   6   7
+2013-01-03   8   9  10  11
+2013-01-04  12  13  14  15
+2013-01-05  16  17  18  19
+2013-01-06  20  21  22  23
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 选择某一列</span></span><br><span class="line">print(df3[<span class="string">'A'</span>])</span><br></pre></td></tr></table></figure>
+<pre><code>2013-01-01     0
+2013-01-02     4
+2013-01-03     8
+2013-01-04    12
+2013-01-05    16
+2013-01-06    20
+Freq: D, Name: A, dtype: int32
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 选择多行</span></span><br><span class="line">df3[<span class="number">0</span>:<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+<div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>A</th><br>      <th>B</th><br>      <th>C</th><br>      <th>D</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>2013-01-01</th><br>      <td>0</td><br>      <td>1</td><br>      <td>2</td><br>      <td>3</td><br>    </tr><br>    <tr><br>      <th>2013-01-02</th><br>      <td>4</td><br>      <td>5</td><br>      <td>6</td><br>      <td>7</td><br>    </tr><br>    <tr><br>      <th>2013-01-03</th><br>      <td>8</td><br>      <td>9</td><br>      <td>10</td><br>      <td>11</td><br>    </tr><br>  </tbody><br></table><br></div>
+
+
+
+<h2 id="通过标签选择数据-loc"><a href="#通过标签选择数据-loc" class="headerlink" title="通过标签选择数据:loc"></a>通过标签选择数据:loc</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(df3.loc[<span class="string">'20130102'</span>])</span><br><span class="line">print(df3.loc[ : , [<span class="string">'A'</span>, <span class="string">'B'</span>]])</span><br><span class="line">print(df3.loc[<span class="string">'20130102'</span>, [<span class="string">'A'</span>, <span class="string">'B'</span>]])</span><br></pre></td></tr></table></figure>
+<pre><code>A    4
+B    5
+C    6
+D    7
+Name: 2013-01-02 00:00:00, dtype: int32
+             A   B
+2013-01-01   0   1
+2013-01-02   4   5
+2013-01-03   8   9
+2013-01-04  12  13
+2013-01-05  16  17
+2013-01-06  20  21
+A    4
+B    5
+Name: 2013-01-02 00:00:00, dtype: int32
+</code></pre><h2 id="通过位置选择：iloc"><a href="#通过位置选择：iloc" class="headerlink" title="通过位置选择：iloc"></a>通过位置选择：iloc</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print(df3)</span><br><span class="line">print(df3.iloc[<span class="number">3</span>,<span class="number">1</span>])<span class="comment">#选择第3行第1列的数,从0行0列开始</span></span><br><span class="line">print(df3.iloc[:, :<span class="number">2</span>])<span class="comment">#选择第0和第1列</span></span><br><span class="line">print(df3.iloc[<span class="number">0</span>:<span class="number">2</span>, :])<span class="comment">#选择第0和第1行</span></span><br></pre></td></tr></table></figure>
+<pre><code>             A   B   C   D
+2013-01-01   0   1   2   3
+2013-01-02   4   5   6   7
+2013-01-03   8   9  10  11
+2013-01-04  12  13  14  15
+2013-01-05  16  17  18  19
+2013-01-06  20  21  22  23
+13
+             A   B
+2013-01-01   0   1
+2013-01-02   4   5
+2013-01-03   8   9
+2013-01-04  12  13
+2013-01-05  16  17
+2013-01-06  20  21
+            A  B  C  D
+2013-01-01  0  1  2  3
+2013-01-02  4  5  6  7
+</code></pre><h2 id="多方式选择数据：ix-该方式现已不被支持"><a href="#多方式选择数据：ix-该方式现已不被支持" class="headerlink" title="多方式选择数据：ix(该方式现已不被支持)"></a><del>多方式选择数据：ix(该方式现已不被支持)</del></h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(df3)</span><br><span class="line">print(df3.ix[:<span class="number">3</span>, [<span class="string">'A'</span>, <span class="string">'C'</span>]])</span><br></pre></td></tr></table></figure>
+<pre><code>             A   B   C   D
+2013-01-01   0   1   2   3
+2013-01-02   4   5   6   7
+2013-01-03   8   9  10  11
+2013-01-04  12  13  14  15
+2013-01-05  16  17  18  19
+2013-01-06  20  21  22  23
+            A   C
+2013-01-01  0   2
+2013-01-02  4   6
+2013-01-03  8  10
+
+
+C:\ProgramData\Anaconda3\lib\site-packages\ipykernel_launcher.py:2: DeprecationWarning: 
+.ix is deprecated. Please use
+.loc for label based indexing or
+.iloc for positional indexing
+
+See the documentation here:
+http://pandas.pydata.org/pandas-docs/stable/indexing.html#ix-indexer-is-deprecated
+</code></pre><h2 id="Bool布尔选择数据-条件筛选"><a href="#Bool布尔选择数据-条件筛选" class="headerlink" title="Bool布尔选择数据(条件筛选)"></a>Bool布尔选择数据(条件筛选)</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(df3)</span><br><span class="line">print(df3[df3.A &gt; <span class="number">8</span>])<span class="comment">#筛选出A列中大于8的数据</span></span><br></pre></td></tr></table></figure>
+<pre><code>             A   B   C   D
+2013-01-01   0   1   2   3
+2013-01-02   4   5   6   7
+2013-01-03   8   9  10  11
+2013-01-04  12  13  14  15
+2013-01-05  16  17  18  19
+2013-01-06  20  21  22  23
+             A   B   C   D
+2013-01-04  12  13  14  15
+2013-01-05  16  17  18  19
+2013-01-06  20  21  22  23
+</code></pre><h2 id="处理缺失值"><a href="#处理缺失值" class="headerlink" title="处理缺失值"></a>处理缺失值</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">dates = pd.date_range(<span class="string">'20130101'</span>,periods=<span class="number">6</span>)</span><br><span class="line">df4 = pd.DataFrame(np.arange(<span class="number">24</span>).reshape((<span class="number">6</span>,<span class="number">4</span>)),index=dates,columns =[<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>,<span class="string">'D'</span>])</span><br><span class="line">df4.iloc[<span class="number">0</span>, <span class="number">1</span>] = np.nan</span><br><span class="line">df4.iloc[<span class="number">1</span>, <span class="number">2</span>] = np.nan</span><br><span class="line">print(df4)</span><br><span class="line"><span class="comment">#丢弃存在缺失值的行</span></span><br><span class="line">print(df4.dropna(axis=<span class="number">0</span>, how=<span class="string">'any'</span>))</span><br><span class="line"><span class="comment">#丢弃存在缺失值的列</span></span><br><span class="line">print(df4.dropna(axis=<span class="number">1</span>, how=<span class="string">'any'</span>))</span><br><span class="line"><span class="comment">#丢弃全为缺失值的列</span></span><br><span class="line">print(df4.dropna(axis=<span class="number">1</span>, how=<span class="string">'all'</span>))</span><br><span class="line"><span class="comment">#填充缺失值为0</span></span><br><span class="line">print(df4.fillna(value = <span class="number">0</span>))</span><br><span class="line"><span class="comment">#填充缺失值为该列的平均值</span></span><br><span class="line">print(df4.fillna(df4.mean()))</span><br><span class="line"><span class="comment">#检测缺失值</span></span><br><span class="line">print(df4.isnull())</span><br></pre></td></tr></table></figure>
+<pre><code>             A     B     C   D
+2013-01-01   0   NaN   2.0   3
+2013-01-02   4   5.0   NaN   7
+2013-01-03   8   9.0  10.0  11
+2013-01-04  12  13.0  14.0  15
+2013-01-05  16  17.0  18.0  19
+2013-01-06  20  21.0  22.0  23
+             A     B     C   D
+2013-01-03   8   9.0  10.0  11
+2013-01-04  12  13.0  14.0  15
+2013-01-05  16  17.0  18.0  19
+2013-01-06  20  21.0  22.0  23
+             A   D
+2013-01-01   0   3
+2013-01-02   4   7
+2013-01-03   8  11
+2013-01-04  12  15
+2013-01-05  16  19
+2013-01-06  20  23
+             A     B     C   D
+2013-01-01   0   NaN   2.0   3
+2013-01-02   4   5.0   NaN   7
+2013-01-03   8   9.0  10.0  11
+2013-01-04  12  13.0  14.0  15
+2013-01-05  16  17.0  18.0  19
+2013-01-06  20  21.0  22.0  23
+             A     B     C   D
+2013-01-01   0   0.0   2.0   3
+2013-01-02   4   5.0   0.0   7
+2013-01-03   8   9.0  10.0  11
+2013-01-04  12  13.0  14.0  15
+2013-01-05  16  17.0  18.0  19
+2013-01-06  20  21.0  22.0  23
+             A     B     C   D
+2013-01-01   0  13.0   2.0   3
+2013-01-02   4   5.0  13.2   7
+2013-01-03   8   9.0  10.0  11
+2013-01-04  12  13.0  14.0  15
+2013-01-05  16  17.0  18.0  19
+2013-01-06  20  21.0  22.0  23
+                A      B      C      D
+2013-01-01  False   True  False  False
+2013-01-02  False  False   True  False
+2013-01-03  False  False  False  False
+2013-01-04  False  False  False  False
+2013-01-05  False  False  False  False
+2013-01-06  False  False  False  False
+</code></pre><h2 id="导入导出数据"><a href="#导入导出数据" class="headerlink" title="导入导出数据"></a>导入导出数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#读取</span></span><br><span class="line">pd.read_csv(path,seq=<span class="string">'\t'</span>)<span class="comment">#用于读txt文本文件时需定义seq=''定义分割符</span></span><br><span class="line">pd.read_excel(path,)</span><br><span class="line">pd.read_html(path,)</span><br><span class="line"><span class="comment">#导出</span></span><br><span class="line">pd.to_csv(path,)</span><br><span class="line">pd.to_excel(path,)</span><br></pre></td></tr></table></figure>
+<h2 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">df11 = pd.DataFrame(np.ones((<span class="number">3</span>, <span class="number">4</span>))*<span class="number">0</span>, columns=[<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'d'</span>])</span><br><span class="line">df22 = pd.DataFrame(np.ones((<span class="number">3</span>, <span class="number">4</span>))*<span class="number">1</span>, columns=[<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'d'</span>])</span><br><span class="line">df33 = pd.DataFrame(np.ones((<span class="number">3</span>, <span class="number">4</span>))*<span class="number">2</span>, columns=[<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'d'</span>])</span><br><span class="line">print(df11, df22, df33)</span><br><span class="line">print(pd.concat([df11,df22,df33],axis=<span class="number">0</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>     a    b    c    d
+0  0.0  0.0  0.0  0.0
+1  0.0  0.0  0.0  0.0
+2  0.0  0.0  0.0  0.0      a    b    c    d
+0  1.0  1.0  1.0  1.0
+1  1.0  1.0  1.0  1.0
+2  1.0  1.0  1.0  1.0      a    b    c    d
+0  2.0  2.0  2.0  2.0
+1  2.0  2.0  2.0  2.0
+2  2.0  2.0  2.0  2.0
+     a    b    c    d
+0  0.0  0.0  0.0  0.0
+1  0.0  0.0  0.0  0.0
+2  0.0  0.0  0.0  0.0
+0  1.0  1.0  1.0  1.0
+1  1.0  1.0  1.0  1.0
+2  1.0  1.0  1.0  1.0
+0  2.0  2.0  2.0  2.0
+1  2.0  2.0  2.0  2.0
+2  2.0  2.0  2.0  2.0
+</code></pre><h2 id="merge合并"><a href="#merge合并" class="headerlink" title="merge合并"></a>merge合并</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">left = pd.DataFrame(&#123;<span class="string">'key'</span>:[<span class="string">'k0'</span>, <span class="string">'k2'</span>, <span class="string">'k3'</span>, <span class="string">'k4'</span>],</span><br><span class="line">              <span class="string">'A'</span>:[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>],</span><br><span class="line">              <span class="string">'B'</span>:[<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>],</span><br><span class="line">              <span class="string">'C'</span>:[<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>]&#125;)</span><br><span class="line">right = pd.DataFrame(&#123;<span class="string">'key'</span>:[<span class="string">'k0'</span>, <span class="string">'k2'</span>, <span class="string">'k3'</span>, <span class="string">'k4'</span>],</span><br><span class="line">              <span class="string">'E'</span>:[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>],</span><br><span class="line">              <span class="string">'F'</span>:[<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>],</span><br><span class="line">              <span class="string">'G'</span>:[<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>]&#125;)</span><br><span class="line">total = pd.merge(left, right, on=<span class="string">'key'</span>)</span><br><span class="line">print(total)</span><br></pre></td></tr></table></figure>
+<pre><code>  key  A  B  C  E  F  G
+0  k0  1  5  2  1  5  2
+1  k2  2  6  4  2  6  4
+2  k3  3  7  6  3  7  6
+3  k4  4  8  8  4  8  8
+</code></pre><h2 id="plot图表"><a href="#plot图表" class="headerlink" title="plot图表"></a>plot图表</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">data = pd.Series(np.random.randn(<span class="number">1000</span>),index=np.arange(<span class="number">1000</span>))</span><br><span class="line">data = data.cumsum()</span><br><span class="line">print(data)</span><br><span class="line">data.plot()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<pre><code>0      -0.038758
+1       1.194976
+2       2.895250
+3       2.915834
+4       0.501214
+5       2.511664
+6       1.231022
+7       0.981318
+8      -1.260096
+9      -1.165160
+10     -0.403735
+11     -2.105983
+12     -1.554743
+13     -0.055939
+14     -0.527321
+15     -0.978687
+16     -0.069414
+17     -1.383085
+18     -1.659076
+19     -1.973426
+20     -2.910417
+21     -2.427762
+22     -2.326099
+23     -0.364917
+24      0.245591
+25     -0.097504
+26     -1.501229
+27     -1.875637
+28     -1.486811
+29     -1.187960
+         ...    
+970    14.658425
+971    14.023073
+972    14.684753
+973    14.482177
+974    14.698712
+975    14.611241
+976    12.517253
+977    11.545272
+978    11.685023
+979    10.714326
+980     9.366165
+981     8.245778
+982     8.341156
+983     8.598774
+984     8.622185
+985    10.172707
+986     8.785854
+987     8.500791
+988     8.197383
+989     7.213132
+990     5.074362
+991     4.967236
+992     6.220900
+993     6.473351
+994     7.345129
+995     6.189166
+996     7.517184
+997     5.893670
+998     5.416785
+999     5.306557
+Length: 1000, dtype: float64
+</code></pre><p><img src="output_30_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Pandas/" rel="tag"># Pandas</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/02/Numpy笔记/" rel="next" title="Numpy笔记">
+                <i class="fa fa-chevron-left"></i> Numpy笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Frankxff</p>
+              <p class="site-description motion-element" itemprop="description">分享编程语言、网络爬虫、机器学习等等！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#导入Pandas"><span class="nav-number">1.</span> <span class="nav-text">导入Pandas</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建序列"><span class="nav-number">2.</span> <span class="nav-text">创建序列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建DataFrame"><span class="nav-number">3.</span> <span class="nav-text">创建DataFrame</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#排序"><span class="nav-number">3.1.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择数据"><span class="nav-number">3.2.</span> <span class="nav-text">选择数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过标签选择数据-loc"><span class="nav-number">3.3.</span> <span class="nav-text">通过标签选择数据:loc</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过位置选择：iloc"><span class="nav-number">3.4.</span> <span class="nav-text">通过位置选择：iloc</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多方式选择数据：ix-该方式现已不被支持"><span class="nav-number">3.5.</span> <span class="nav-text">多方式选择数据：ix(该方式现已不被支持)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bool布尔选择数据-条件筛选"><span class="nav-number">3.6.</span> <span class="nav-text">Bool布尔选择数据(条件筛选)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#处理缺失值"><span class="nav-number">3.7.</span> <span class="nav-text">处理缺失值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导入导出数据"><span class="nav-number">3.8.</span> <span class="nav-text">导入导出数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合并"><span class="nav-number">3.9.</span> <span class="nav-text">合并</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#merge合并"><span class="nav-number">3.10.</span> <span class="nav-text">merge合并</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#plot图表"><span class="nav-number">3.11.</span> <span class="nav-text">plot图表</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frankxff</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
