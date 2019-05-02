@@ -292,6 +292,725 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://frankxff.github.io/2019/05/02/函数参数理解 - 副本/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Frankxff">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Frankxff's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/02/函数参数理解 - 副本/" itemprop="url">JavaScript函数参数理解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-02T13:22:09+08:00">
+                2019-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/program/" itemprop="url" rel="index">
+                    <span itemprop="name">program</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>参见《JS高级程序设计》</p>
+</blockquote>
+<p>ECMAScript函数不介意传递进来多少参数，也不在乎传进来的参数是什么类型。即使你定义只接收两个参数，在调用这个函数时也未必要传递两个参数，传递一个或三个甚至不传递参数也可以。</p>
+<p><strong>原理</strong>：ECMAScript中的参数在内部是用一个数组来表示的。函数接收到的始终都是这个数组，而不关心数组中有哪些参数。在函数体内可以通过arguments对象来访问这个参数数组，从而获取传递给函数的每一个参数。</p>
+<blockquote>
+<p>注意：其实，arguments对象只是与数组类似（它并不是Array实例），可以使用方括号语法访问它的每一个元素（即第一个元素是 arguments[0] ,第二个元素是 arguments[1] ，以此类推），它使用 length 属性来确定传递进来多少个参数。</p>
+</blockquote>
+<p>代码示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function sum(num1, num2)&#123;</span><br><span class="line">	var total = num1 + num2;</span><br><span class="line">	alert(arguments[0] + &quot;+&quot; + arguments[1] + &quot; = &quot; + total);</span><br><span class="line">&#125;</span><br><span class="line">sum(555,111);</span><br><span class="line">//弹出 555 + 111 = 666</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://frankxff.github.io/2019/05/02/执行环境与作用域/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Frankxff">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Frankxff's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/02/执行环境与作用域/" itemprop="url">执行环境与作用域</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-02T13:21:06+08:00">
+                2019-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/program/" itemprop="url" rel="index">
+                    <span itemprop="name">program</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>执行环境定义了变量或函数有权访问的其他数据，决定它们各自的行为。环境中定义的所有变量和函数都保存在这个对象中。</li>
+</ul>
+<ol>
+<li><strong>全局执行环境</strong>：是最外围的执行环境。在WEB浏览器中，全局执行环境被认为是windows对象，所有全局变量和函数都是作为windows对象的属性和方法创建的（直到应用程序退出如关闭网页或浏览器时才被销毁）。</li>
+<li><strong>环境栈</strong>：每个函数都有自己的执行环境。当执行流进入一个函数时，函数的环境就会被推入一个环境栈中。在函数执行之后，栈将其弹出，把控制权返回给之前的执行环境。</li>
+<li><strong>作用域链</strong>：当代码在一个环境中执行时，会创建变量对象的一个作用域链。作用域链的用途是保证对执行环境有权访问的所有变量和函数的有序访问。作用域链的前端，始终都是当前执行的代码所在环境的变量对象。如果这个环境是函数，则将其活动对象（activation object）作为变量对象。活动对象在最开始时只包含一个变量，即arguments 对象（这个对象在全局环境中是不存在的）。作用域链中的下一个变量对象来自包含（外部）环境，而再下一个变量对象则来自下一个包含环境。这样，一直延续到全局执行环境；全局执行环境的变量对象始终都是作用域链中的最后一个对象。<br>标识符解析是沿着作用域链一级一级地搜索标识符的过程。搜索过程始终从作用域链的前端开始，然后逐级地向后回溯，直至找到标识符为止（如果找不到标识符，通常会导致错误发生）。</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://frankxff.github.io/2019/05/02/区分基本类型和引用类型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Frankxff">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Frankxff's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/02/区分基本类型和引用类型/" itemprop="url">区分js基本类型和引用类型</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-02T13:21:06+08:00">
+                2019-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/program/" itemprop="url" rel="index">
+                    <span itemprop="name">program</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>变量包含两种不同数据类型的值：基本类型和引用类型。</p>
+<ul>
+<li><strong>基本类型</strong>：简单的数据段，按值访问。如Undefined、Null、Boolean、Number和String。不可添加属性，尽管这样不返回错误但没有意义。赋值到新变量时会复制创建一个新值，新旧两个变量相互独立使用。</li>
+<li><strong>引用类型</strong>：由多个值组成的对象，按引用（指针）访问。可添加属性和方法，赋值时实际上赋予的是该对象的指针，但新对象只是原对象的一个引用，两者的属性方法共用，两者实际表示一个东西~。</li>
+</ul>
+<p>代码示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//基本类型</span><br><span class="line">var num1 = 5;</span><br><span class="line">var num2 = num1;</span><br><span class="line">var num2 = 10;</span><br><span class="line">var num1.size = 800;</span><br><span class="line">alert(num1 + &quot; &quot; + num2); // 5 10</span><br><span class="line">alert(num1.size);	// undefined</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>《js高级程序设计》表示基本类型的属性方法可用不会报错，在我实际测试时新规范使用时会报错。所以记着基本变量没有属性方法即可</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//引用类型</span><br><span class="line">var obj1 = new Object();</span><br><span class="line">var obj2 = obj1;</span><br><span class="line">obj1.name = &quot;moshanxi&quot;;</span><br><span class="line">alert(obj2.name);	//	 &quot;moshanxi&quot;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://frankxff.github.io/2019/05/02/函数无重载/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Frankxff">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Frankxff's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/02/函数无重载/" itemprop="url">js函数没有重载</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-02T13:21:06+08:00">
+                2019-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/program/" itemprop="url" rel="index">
+                    <span itemprop="name">program</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>如果在JS中定义了两个名字相同的函数，则该名字只属于后定义的函数（即后定义的函数覆盖了先定义的函数。<br>代码示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function addnum(num)&#123;</span><br><span class="line">	return num + 100;	</span><br><span class="line">&#125;</span><br><span class="line">function addnum(num)&#123;</span><br><span class="line">	return num + 200;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var result = addnum(100);	//300</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://frankxff.github.io/2019/05/02/函数参数理解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Frankxff">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Frankxff's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/02/函数参数理解/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-02T13:21:06+08:00">
+                2019-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="JavaScript函数参数理解"><a href="#JavaScript函数参数理解" class="headerlink" title="JavaScript函数参数理解"></a>JavaScript函数参数理解</h1><blockquote>
+<p>参见《JS高级程序设计》</p>
+</blockquote>
+<p>ECMAScript函数不介意传递进来多少参数，也不在乎传进来的参数是什么类型。即使你定义只接收两个参数，在调用这个函数时也未必要传递两个参数，传递一个或三个甚至不传递参数也可以。</p>
+<p><strong>原理</strong>：ECMAScript中的参数在内部是用一个数组来表示的。函数接收到的始终都是这个数组，而不关心数组中有哪些参数。在函数体内可以通过arguments对象来访问这个参数数组，从而获取传递给函数的每一个参数。</p>
+<blockquote>
+<p>注意：其实，arguments对象只是与数组类似（它并不是Array实例），可以使用方括号语法访问它的每一个元素（即第一个元素是 arguments[0] ,第二个元素是 arguments[1] ，以此类推），它使用 length 属性来确定传递进来多少个参数。</p>
+</blockquote>
+<p>代码示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function sum(num1, num2)&#123;</span><br><span class="line">	var total = num1 + num2;</span><br><span class="line">	alert(arguments[0] + &quot;+&quot; + arguments[1] + &quot; = &quot; + total);</span><br><span class="line">&#125;</span><br><span class="line">sum(555,111);</span><br><span class="line">//弹出 555 + 111 = 666</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://frankxff.github.io/2019/03/21/WebAPP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1263,7 +1982,7 @@ z = 3;
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
